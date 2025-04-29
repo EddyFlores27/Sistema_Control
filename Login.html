@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión | MASS</title>
+    <link rel="stylesheet" href="css/styles_log.css">
+    <script>
+        // Función para obtener parámetros de la URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Mostrar el tipo de perfil al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            const profile = getQueryParam('profile');
+            const profileDisplay = document.getElementById('profile-display');
+            const hiddenProfileInput = document.getElementById('hidden-profile');
+            
+            if (profile) {
+                const profileNames = {
+                    'gerente': 'Gerente',
+                    'admin': 'Administrador',
+                    'user': 'Usuario'
+                };
+                
+                profileDisplay.textContent = `Iniciar sesión como: ${profileNames[profile] || 'Usuario'}`;
+                hiddenProfileInput.value = profile;
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <form action="php/login.php" method="POST">
+            <img src="https://www.tiendasmass.com.pe/wp-content/themes/mass/img/mass_logo.webp" alt="Logo MASS" class="logo">
+            <h1>Bienvenido a MASS</h1>
+            
+            <!-- Mostrar el tipo de perfil seleccionado -->
+            <p class="subtitle"><strong id="profile-display">Sistema de Control de Producción</strong></p>
+
+            <!-- Campo oculto para enviar el perfil -->
+            <input type="hidden" name="profile" id="hidden-profile" value="user">
+
+            <div class="input-group">
+                <input type="text" name="usuario" placeholder="Usuario" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Contraseña" required>
+            </div>
+
+            <div class="btn-group">
+                <button type="submit" class="btn primary">Ingresar</button>
+                <button type="button" class="btn secondary" onclick="navigateToRegister()">Registrarse</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Función para navegar a registro con el mismo perfil
+        function navigateToRegister() {
+            const profile = getQueryParam('profile') || 'user';
+            window.location.href = `register.html?profile=${profile}`;
+        }
+    </script>
+</body>
+</html>

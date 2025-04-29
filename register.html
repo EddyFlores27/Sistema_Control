@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | MASS</title>
+    <link rel="stylesheet" href="css/styles_log.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        // Función para obtener parámetros de la URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Mostrar el tipo de perfil al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            const profile = getQueryParam('profile') || 'user';
+            const profileDisplay = document.getElementById('profile-display');
+            const hiddenRolInput = document.getElementById('hidden-rol');
+            const loginBtn = document.getElementById('login-btn');
+            
+            // Traducción de roles
+            const profileNames = {
+                'gerente': 'Gerente',
+                'admin': 'Administrador',
+                'user': 'Usuario Normal'
+            };
+
+            // Actualizar la interfaz
+            if (profile && profileNames[profile]) {
+                profileDisplay.innerHTML = `Registro como <strong>${profileNames[profile]}</strong>`;
+                hiddenRolInput.value = profile;
+            }
+
+            // Configurar botón de login para mantener el rol
+            loginBtn.onclick = function() {
+                window.location.href = `Login.html?profile=${profile}`;
+            };
+
+            // Mostrar ícono según el rol
+            const roleIcon = document.getElementById('role-icon');
+            if (profile === 'gerente') {
+                roleIcon.className = 'fas fa-user-tie';
+            } else if (profile === 'admin') {
+                roleIcon.className = 'fas fa-user-cog';
+            } else {
+                roleIcon.className = 'fas fa-user';
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <form action="php/register.php" method="POST">
+            <img src="https://www.tiendasmass.com.pe/wp-content/themes/mass/img/mass_logo.webp" alt="Logo MASS" class="logo">
+            <h1>Crear Cuenta</h1>
+            
+            <!-- Mostrar el tipo de perfil seleccionado con ícono -->
+            <p class="subtitle">
+                <i id="role-icon" class="fas fa-user"></i>
+                <span id="profile-display">Registro en el sistema</span>
+            </p>
+
+            <!-- Campo oculto para enviar el rol -->
+            <input type="hidden" name="rol" id="hidden-rol" value="user">
+
+            <div class="input-group">
+                <input type="text" name="nombre_completo" placeholder="Nombre completo" required>
+            </div>
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Correo electrónico" required>
+            </div>
+            <div class="input-group">
+                <input type="text" name="usuario" placeholder="Nombre de usuario" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Contraseña" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="confirm_password" placeholder="Confirmar contraseña" required>
+            </div>
+
+            <div class="btn-group">
+                <button type="submit" class="btn primary">
+                    <i class="fas fa-user-plus"></i> Registrarse
+                </button>
+                <button type="button" id="login-btn" class="btn secondary">
+                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
