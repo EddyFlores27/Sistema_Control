@@ -11,9 +11,9 @@ $nombre = $_SESSION['user_name'] ?? 'Usuario';
 include '../Sistema_Control/php/conexion.php';
 
 $buscar = $_GET['buscar'] ?? '';
-$sql = "SELECT * FROM proveedores 
-        WHERE nombre LIKE '%$buscar%' OR contact_info LIKE '%$buscar%' 
-        ORDER BY fecha_creacion DESC";
+$sql = "SELECT * FROM productos 
+        WHERE nombre LIKE '%$buscar%' 
+        ORDER BY fecha_hora DESC";
 $resultado = mysqli_query($conexion, $sql);
 
 if (!$resultado) {
@@ -25,7 +25,7 @@ if (!$resultado) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Proveedores | MASS</title>
+    <title>Productos | MASS</title>
     <link rel="stylesheet" href="../Sistema_Control/css/styles_dash.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -53,13 +53,13 @@ if (!$resultado) {
     </div>
 
     <div class="main">
-        <h1>Gestión de Proveedores</h1>
+        <h1>Gestión de Productos</h1>
 
         <div class="top-bar" style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
             <form method="GET" style="flex-grow: 1; margin-right: 1rem;">
-                <input type="text" name="buscar" class="buscar" placeholder="Buscar por nombre o contacto..." value="<?php echo htmlspecialchars($buscar); ?>" style="padding: 0.5rem; width: 100%; max-width: 300px;">
+                <input type="text" name="buscar" class="buscar" placeholder="Buscar por nombre..." value="<?php echo htmlspecialchars($buscar); ?>" style="padding: 0.5rem; width: 100%; max-width: 300px;">
             </form>
-            <a href="nuevo_proveedor.php" class="nuevo-personal" style="background: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none;">Nuevo Proveedor</a>
+            <a href="nuevo_producto.php" class="nuevo-personal" style="background: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none;">Nuevo Producto</a>
         </div>
 
         <div class="table-container">
@@ -67,10 +67,11 @@ if (!$resultado) {
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Fecha de Creación</th>
+                        <th>Movimiento</th>
+                        <th>Fecha y Hora</th>
                         <th>Nombre</th>
-                        <th>Contacto</th>
-                        <th>Estado</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
@@ -80,17 +81,18 @@ if (!$resultado) {
                     while ($fila = mysqli_fetch_assoc($resultado)): ?>
                         <tr>
                             <td><?php echo $contador++; ?></td>
-                            <td><?php echo htmlspecialchars($fila['fecha_creacion']); ?></td>
+                            <td><?php echo htmlspecialchars($fila['movimiento']); ?></td>
+                            <td><?php echo htmlspecialchars($fila['fecha_hora']); ?></td>
                             <td><?php echo htmlspecialchars($fila['nombre']); ?></td>
-                            <td><?php echo htmlspecialchars($fila['contact_info']); ?></td>
-                            <td><?php echo htmlspecialchars($fila['estado']); ?></td>
+                            <td>S/ <?php echo number_format($fila['precio'], 2); ?></td>
+                            <td><?php echo htmlspecialchars($fila['cantidad']); ?></td>
                             <td>
                                 <div class="action-dropdown">
                                     <button class="dropdown-btn">Acciones</button>
                                     <div class="dropdown-content">
-                                        <a href="ver_proveedor.php?id=<?php echo $fila['id']; ?>">Ver</a>
-                                        <a href="editar_proveedor.php?id=<?php echo $fila['id']; ?>">Editar</a>
-                                        <a href="eliminar_proveedor.php?id=<?php echo $fila['id']; ?>" onclick="return confirm('¿Seguro que deseas eliminar este proveedor?');">Eliminar</a>
+                                        <a href="ver_producto.php?id=<?php echo $fila['id']; ?>">Ver</a>
+                                        <a href="editar_producto.php?id=<?php echo $fila['id']; ?>">Editar</a>
+                                        <a href="eliminar_producto.php?id=<?php echo $fila['id']; ?>" onclick="return confirm('¿Seguro que deseas eliminar este producto?');">Eliminar</a>
                                     </div>
                                 </div>
                             </td>

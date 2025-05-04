@@ -74,7 +74,7 @@ $nombre = $_SESSION['user_name'] ?? 'Usuario';
             <?php endif; ?>
 
             <?php if (in_array('gestion_usuarios', $permisos[$rol])): ?>
-                <a href="usuarios.php" class="card">
+                <a href="personal.php" class="card">
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M5.121 17.804A13.937 13.937 0 0112 15c2.21 0 4.28.535 6.121 1.48M15 11a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
