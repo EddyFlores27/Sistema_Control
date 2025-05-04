@@ -1,8 +1,15 @@
 <?php
 include 'php/conexion.php';
+
 $result = $conexion->query("SHOW TABLES");
-echo "Tablas en la BD: ";
+
+if (!$result) {
+    die("Error en la consulta: " . $conexion->error);
+}
+
+echo "Tablas en la BD:<br>";
+
 while ($row = $result->fetch_array()) {
-    print_r($row);
+    echo $row[0] . "<br>";
 }
 ?>

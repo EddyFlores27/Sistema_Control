@@ -1,0 +1,188 @@
+{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        display: flex;
+        min-height: 100vh;
+        background: #f5f7fa;
+    }
+
+    .sidebar {
+        width: 240px;
+        background: #1f2937;
+        color: white;
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .sidebar .avatar {
+        width: 60px;
+        height: 60px;
+        background: #3b82f6;
+        border-radius: 8px;
+    }
+
+    .sidebar .admin-label {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .logout {
+        background: #374151;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .logout:hover {
+        background: #4b5563;
+    }
+
+    .main {
+        flex: 1;
+        padding: 2rem;
+    }
+
+    .main h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        color: #1f2937;
+    }
+
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+    }
+
+    .card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        cursor: pointer;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        background: #f0f4ff;
+    }
+
+    .card svg {
+        width: 40px;
+        height: 40px;
+        stroke: #6b7280;
+    }
+
+    .card p {
+        font-size: 1.1rem;
+        color: #374151;
+    }
+    /*Quita el diseño de enlace :V*/
+    .card-grid a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+
+
+    /* === Estilos para vista de proveedores === */
+
+.table-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #f0f4ff;
+}
+
+th, td {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+.action-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 6px;
+    overflow: hidden;
+    min-width: 120px;
+}
+
+.dropdown-content a {
+    color: #1f2937;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f3f4f6;
+}
+
+.action-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.nav-buttons {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nav-buttons a {
+    background: #374151;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.nav-buttons a:hover {
+    background: #4b5563;
+}
