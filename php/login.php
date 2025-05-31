@@ -37,5 +37,5 @@ if ($resultado->num_rows === 1) {
 }
 
 // Si llega aquí es porque falló
-die("Usuario o contraseña incorrectos. <a href='Login.html?profile=" . urlencode($rol_solicitado) . "'>Volver</a>");
+die("Usuario o contraseña incorrectos. <a href='../Login.html?profile=" . urlencode($rol_solicitado) . "'>Volver</a>");
 ?>
