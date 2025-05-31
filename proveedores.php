@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../index.html");
     exit();
@@ -25,6 +25,7 @@ if (!$resultado) {
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proveedores | MASS</title>
     <link rel="stylesheet" href="../Sistema_Control/css/styles_dash.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -55,11 +56,11 @@ if (!$resultado) {
     <div class="main">
         <h1>Gestión de Proveedores</h1>
 
-        <div class="top-bar" style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+        <div class="top-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
             <form method="GET" style="flex-grow: 1; margin-right: 1rem;">
-                <input type="text" name="buscar" class="buscar" placeholder="Buscar por nombre o contacto..." value="<?php echo htmlspecialchars($buscar); ?>" style="padding: 0.5rem; width: 100%; max-width: 300px;">
+                <input type="text" name="buscar" class="buscar" placeholder="Buscar por nombre o contacto..." value="<?php echo htmlspecialchars($buscar); ?>">
             </form>
-            <a href="nuevo_proveedor.php" class="nuevo-personal" style="background: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none;">Nuevo Proveedor</a>
+            <a href="nuevo_proveedor.php" class="nuevo-personal">Nuevo Proveedor</a>
         </div>
 
         <div class="table-container">
@@ -77,25 +78,37 @@ if (!$resultado) {
                 <tbody>
                     <?php
                     $contador = 1;
-                    while ($fila = mysqli_fetch_assoc($resultado)): ?>
-                        <tr>
-                            <td><?php echo $contador++; ?></td>
-                            <td><?php echo htmlspecialchars($fila['fecha_creacion']); ?></td>
-                            <td><?php echo htmlspecialchars($fila['nombre']); ?></td>
-                            <td><?php echo htmlspecialchars($fila['contact_info']); ?></td>
-                            <td><?php echo htmlspecialchars($fila['estado']); ?></td>
-                            <td>
-                                <div class="action-dropdown">
-                                    <button class="dropdown-btn">Acciones</button>
-                                    <div class="dropdown-content">
-                                        <a href="ver_proveedor.php?id=<?php echo $fila['id']; ?>">Ver</a>
-                                        <a href="editar_proveedor.php?id=<?php echo $fila['id']; ?>">Editar</a>
-                                        <a href="eliminar_proveedor.php?id=<?php echo $fila['id']; ?>" onclick="return confirm('¿Seguro que deseas eliminar este proveedor?');">Eliminar</a>
+                    if (mysqli_num_rows($resultado) > 0) {
+                        while ($fila = mysqli_fetch_assoc($resultado)): ?>
+                            <tr>
+                                <td><?php echo $contador++; ?></td>
+                                <td><?php echo htmlspecialchars($fila['fecha_creacion']); ?></td>
+                                <td><?php echo htmlspecialchars($fila['nombre']); ?></td>
+                                <td><?php echo htmlspecialchars($fila['contact_info']); ?></td>
+                                <td>
+                                    <span style="padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.875rem; <?php echo $fila['estado'] === 'activo' ? 'background-color: #dcfce7; color: #166534;' : 'background-color: #fee2e2; color: #991b1b;'; ?>">
+                                        <?php echo ucfirst(htmlspecialchars($fila['estado'])); ?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="action-dropdown">
+                                        <button class="dropdown-btn">Acciones</button>
+                                        <div class="dropdown-content">
+                                            <a href="ver_proveedor.php?id=<?php echo $fila['id']; ?>">Ver</a>
+                                            <a href="editar_proveedor.php?id=<?php echo $fila['id']; ?>">Editar</a>
+                                            <a href="eliminar_proveedor.php?id=<?php echo $fila['id']; ?>" onclick="return confirm('¿Seguro que deseas eliminar este proveedor?');">Eliminar</a>
+                                        </div>
                                     </div>
-                                </div>
+                                </td>
+                            </tr>
+                        <?php endwhile;
+                    } else { ?>
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 2rem; color: #6b7280;">
+                                <?php echo empty($buscar) ? 'No hay proveedores registrados' : 'No se encontraron proveedores que coincidan con la búsqueda'; ?>
                             </td>
                         </tr>
-                    <?php endwhile; ?>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
