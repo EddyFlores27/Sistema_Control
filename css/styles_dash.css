@@ -1,107 +1,120 @@
-{
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: 'Segoe UI', sans-serif;
-    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-    body {
-        display: flex;
-        min-height: 100vh;
-        background: #f5f7fa;
-    }
+body {
+    display: flex;
+    min-height: 100vh;
+    background: white;
+}
 
-    .sidebar {
-        width: 240px;
-        background: #1f2937;
-        color: white;
-        padding: 2rem 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-    }
+.sidebar {
+    width: 240px;
+    background: #1f2937; /* Gris oscuro */
+    color: white;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
 
-    .sidebar .avatar {
-        width: 60px;
-        height: 60px;
-        background: #3b82f6;
-        border-radius: 8px;
-    }
+.sidebar .avatar {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(rgba(2, 2, 159, 0.23), rgba(2, 2, 159, 0.85)),
+                url('');
+    border-radius: 8px;
+    /* Si el avatar es una imagen, añadir: */
+    background-size: cover; */
+    background-position: center; */
+    background-image: url('https://peruretail.sfo3.cdn.digitaloceanspaces.com/wp-content/uploads/maaaassssd-scaled.jpg');
+}
 
-    .sidebar .admin-label {
-        font-size: 1.2rem;
-        font-weight: bold;
-    }
+.sidebar .admin-label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
 
-    .logout {
-        background: #374151;
-        color: white;
-        padding: 0.5rem 1rem;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.3s;
-    }
+.sidebar .admin-label i { /* Estilo para los iconos de rol */
+    font-size: 1.2em;
+    margin-right: 5px;
+    color: #f1c40f; /* Un amarillo para destacar */
+}
 
-    .logout:hover {
-        background: #4b5563;
-    }
+.logout {
+    background: #374151; /* Gris medio */
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
 
-    .main {
-        flex: 1;
-        padding: 2rem;
-    }
+.logout:hover {
+    background: #4b5563; /* Gris un poco más claro */
+}
 
-    .main h1 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-        color: #1f2937;
-    }
+.main {
+    flex: 1;
+    padding: 2rem;
+}
 
-    .card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-    }
+.main h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #1f2937; /* Gris muy oscuro */
+}
 
-    .card {
-        background: white;
-        padding: 2rem;
-        border-radius: 12px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-        cursor: pointer;
-    }
+/* === Estilos para la vista de dashboard (si la tienes) === */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
 
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        background: #f0f4ff;
-    }
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Añadido para consistencia */
+}
 
-    .card svg {
-        width: 40px;
-        height: 40px;
-        stroke: #6b7280;
-    }
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background: #f0f4ff; /* Azul muy claro */
+}
 
-    .card p {
-        font-size: 1.1rem;
-        color: #374151;
-    }
-    /*Quita el diseño de enlace :V*/
-    .card-grid a {
-        text-decoration: none;
-        color: inherit;
-    }
+.card svg {
+    width: 40px;
+    height: 40px;
+    stroke: #6b7280; /* Gris */
+}
 
+.card p {
+    font-size: 1.1rem;
+    color: #374151; /* Gris oscuro */
+}
 
+/* Quita el diseño de enlace */
+.card-grid a {
+    text-decoration: none;
+    color: inherit;
+}
 
-    /* === Estilos para vista de proveedores y demas=== */
+/* === Estilos para vistas de listado (proveedores, personal, productos) === */
 
 .table-container {
     background: white;
@@ -113,30 +126,53 @@
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 1rem; /* Añadido para espacio después de buscar/agregar botones */
 }
 
 thead {
-    background-color: #f0f4ff;
+    background-color: #f0f4ff; /* Azul muy claro */
 }
 
 th, td {
     padding: 1rem;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb; /* Gris claro */
     text-align: center;
+    font-size: 0.95rem; /* Ligeramente más pequeño para tablas */
+    color: #374151; /* Color de texto para th/td */
 }
 
+th {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+td {
+    color: #4b5563;
+}
+
+tbody tr:hover {
+    background-color: #f9fafb; /* Ligeramente más claro al pasar el mouse */
+}
+
+/* Estilos de acción con dropdown */
 .action-dropdown {
     position: relative;
     display: inline-block;
 }
 
 .dropdown-btn {
-    background: #3b82f6;
+    background: #3b82f6; /* Azul */
     color: white;
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 6px;
     cursor: pointer;
+    font-size: 0.9rem; /* Un poco más pequeño */
+    transition: background 0.3s;
+}
+
+.dropdown-btn:hover {
+    background: #2563eb; /* Azul más oscuro */
 }
 
 .dropdown-content {
@@ -144,27 +180,37 @@ th, td {
     position: absolute;
     background-color: white;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    z-index: 1;
+    z-index: 100; /* Asegura que esté sobre otros elementos */
     border-radius: 6px;
     overflow: hidden;
     min-width: 120px;
+    right: 0; /* Alinea a la derecha del botón */
+    top: 100%; /* Coloca debajo del botón */
+    margin-top: 5px; /* Pequeño espacio */
 }
 
 .dropdown-content a {
-    color: #1f2937;
+    color: #1f2937; /* Gris muy oscuro */
     padding: 0.75rem 1rem;
     text-decoration: none;
     display: block;
+    font-size: 0.9rem;
 }
 
 .dropdown-content a:hover {
-    background-color: #f3f4f6;
+    background-color: #f3f4f6; /* Gris muy claro */
 }
 
-.action-dropdown:hover .dropdown-content {
-    display: block;
+/*.action-dropdown:hover .dropdown-content,
+.dropdown-content:hover {
+  display: block;
+}*/
+.dropdown-content.show {
+  display: block;
 }
 
+
+/* Estilos de botones de navegación en el sidebar */
 .nav-buttons {
     margin-top: 2rem;
     width: 100%;
@@ -174,15 +220,469 @@ th, td {
 }
 
 .nav-buttons a {
-    background: #374151;
+    background: #363a3f; /* Gris medio */
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1rem;
     text-align: center;
     border-radius: 8px;
     text-decoration: none;
     transition: background 0.3s;
+    font-weight: 500;
 }
 
-.nav-buttons a:hover {
-    background: #4b5563;
+.nav-buttons a:hover,
+.nav-buttons a.active { /* Para resaltar la página actual */
+    background: #2361b8; /* Gris un poco más claro */
+}
+
+/* Estilos del campo de búsqueda */
+.buscar {
+    padding: 0.75rem; /* Aumentado padding para coincidir con otros inputs */
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); /* Pequeña sombra interna */
+}
+
+.nuevo-personal {
+    background: #3b82f6;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.nuevo-personal:hover {
+    background: #2563eb;
+}
+
+/* Estilos de botón nuevo personal/proveedor/producto */
+.top-actions { /* Contenedor para buscar y añadir, si los tienes juntos */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem; /* Espacio antes de la tabla */
+    flex-wrap: wrap; /* Para responsive */
+    gap: 1rem; /* Espacio entre elementos */
+}
+
+.btn-add-new { /* Renombrado de .nuevo-personal a algo más genérico */
+    background: #3b82f6; /* Azul */
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-flex; /* Para el icono y el texto */
+    align-items: center;
+    gap: 0.5rem; /* Espacio entre icono y texto */
+}
+
+.btn-add-new:hover {
+    background: #2563eb; /* Azul más oscuro */
+}
+
+/* === Estilos para formularios (nuevo, editar, ver) === */
+.form-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    max-width: 600px;
+    margin: 0 auto; /* Centra el formulario en la página */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #374151; /* Gris oscuro */
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db; /* Gris claro */
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05); /* Pequeña sombra interna */
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3b82f6; /* Azul */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); /* Sombra de foco azul */
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Para las páginas de "Ver Detalles" (ej. ver_personal.php) */
+.form-group p {
+    background-color: #f8f8f8; /* Fondo ligeramente gris para los valores */
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #1f2937;
+    margin-top: 0.5rem;
+    word-break: break-word; /* Para evitar desbordamiento con textos largos */
+}
+
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end; /* Alinea los botones a la derecha */
+    margin-top: 2rem;
+    flex-wrap: wrap; /* Para responsive */
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s; /* Añadido transform para efecto hover */
+    text-decoration: none;
+    display: inline-flex; /* Para icono y texto */
+    align-items: center;
+    gap: 0.5rem; /* Espacio entre icono y texto */
+    text-align: center;
+}
+
+.btn:hover {
+    transform: translateY(-2px); /* Pequeño levantamiento al pasar el mouse */
+}
+
+.btn-primary {
+    background: #3b82f6; /* Azul */
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2563eb; /* Azul más oscuro */
+}
+
+.btn-secondary {
+    background: #6b7280; /* Gris */
+    color: white;
+}
+
+
+.btn-secondary:hover {
+    background: #4b5563; /* Gris más oscuro */
+}
+
+.btn-danger {
+    background: #ef4444; /* Rojo */
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #dc2626; /* Rojo más oscuro */
+}
+
+/* Mensajes de alerta */
+.alert {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem; /* Ajustado para un poco más de espacio */
+    font-weight: 500; /* Hace el texto un poco más audaz */
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Espacio entre icono y texto */
+}
+
+.alert i { /* Icono dentro del alert */
+    font-size: 1.2rem;
+}
+
+.alert-success {
+    background-color: #dcfce7; /* Verde claro */
+    color: #166534; /* Verde oscuro */
+    border: 1px solid #bbf7d0; /* Borde verde */
+}
+
+.alert-error {
+    background-color: #fee2e2; /* Rojo claro */
+    color: #991b1b; /* Rojo oscuro */
+    border: 1px solid #fecaca; /* Borde rojo */
+}
+
+.alert-warning {
+    background-color: #fef3c7; /* Amarillo claro */
+    color: #92400e; /* Naranja oscuro */
+    border: 1px solid #fde68a; /* Borde amarillo */
+}
+
+/* Estilos para la página de eliminación (warning-container) */
+.warning-container {
+    background: #fef3c7; /* Amarillo claro */
+    border: 1px solid #fde68a; /* Borde amarillo */
+    color: #92400e; /* Naranja oscuro */
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.warning-container i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    color: #d97706; /* Naranja */
+}
+
+.warning-container h2 {
+    margin-bottom: 1rem;
+    color: #92400e;
+}
+
+.warning-container p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #92400e;
+}
+
+.personal-info, .provider-info { /* Reutilizando el estilo para mostrar info a eliminar */
+    background: #f3f4f6; /* Gris muy claro */
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem auto; /* Centrar y añadir margen */
+    max-width: 500px; /* Ancho máximo para legibilidad */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); /* Sombra interna sutil */
+}
+
+.personal-info h3, .provider-info h3 {
+    margin-bottom: 1rem;
+    color: #1f2937; /* Gris muy oscuro */
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 0.75rem;
+}
+
+.personal-detail, .provider-detail {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Columna de label y columna de valor */
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    align-items: baseline;
+    font-size: 0.95rem;
+}
+
+.personal-detail strong, .provider-detail strong {
+    color: #374151; /* Gris oscuro */
+    text-align: right; /* Alinea los labels a la derecha */
+}
+
+.personal-detail span, .provider-detail span {
+    color: #4b5563; /* Gris medio */
+    text-align: left;
+}
+
+/* Estado Activo/Inactivo (reutilizable) */
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    min-width: 70px; /* Ancho mínimo para que se vean uniformes */
+}
+
+.status-activo {
+    background-color: #dcfce7; /* green-100 */
+    color: #166534; /* green-800 */
+}
+
+.status-inactivo {
+    background-color: #fee2e2; /* red-100 */
+    color: #991b1b; /* red-800 */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .sidebar .avatar {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 0;
+    }
+
+    .sidebar .admin-label {
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+
+    .logout {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .nav-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+
+    .nav-buttons a {
+        flex: 1 1 auto; /* Permite que los elementos se expandan */
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .main {
+        padding: 1rem;
+    }
+
+    .main h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .top-actions {
+        flex-direction: column;
+        align-items: stretch; /* Estira los elementos para que ocupen todo el ancho */
+    }
+
+    .buscar, .btn-add-new {
+        width: 100%; /* Ocupan todo el ancho disponible */
+        max-width: none;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 0.75rem;
+    }
+
+    .action-dropdown {
+        width: 100%;
+        text-align: center;
+    }
+    .dropdown-btn {
+        width: 100%;
+    }
+    .dropdown-content {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: unset;
+        width: 90%; /* Ajusta el ancho para que no se desborde */
+    }
+
+    .form-container {
+        padding: 1.5rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea,
+    .form-group p {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch; /* Estira los botones para que ocupen todo el ancho */
+    }
+
+    .btn {
+        width: 100%; /* Botones de acción ocupan todo el ancho */
+        padding: 0.75rem 1rem;
+    }
+
+    .warning-container {
+        padding: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .personal-info, .provider-info {
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .personal-detail strong, .provider-detail strong {
+        text-align: left; /* En móviles, alinear a la izquierda es mejor */
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar .admin-label {
+        display: none; /* Oculta el label de admin en pantallas muy pequeñas para ahorrar espacio */
+    }
+    .sidebar .avatar {
+        margin-right: 10px; /* Pequeño espacio si se mantiene en fila */
+    }
+    .logout {
+        margin-left: auto; /* Empuja el botón de cerrar sesión a la derecha */
+    }
+    .nav-buttons a {
+        flex: 1 1 calc(50% - 0.5rem); /* Dos botones por fila con espacio */
+    }
+    .main h1 {
+        font-size: 1.5rem;
+    }
+    .personal-detail, .provider-detail {
+        grid-template-columns: 1fr; /* Una columna para detalles en pantallas muy pequeñas */
+        gap: 0.5rem;
+    }
+    .personal-detail strong, .provider-detail strong {
+        text-align: left;
+    }
 }
