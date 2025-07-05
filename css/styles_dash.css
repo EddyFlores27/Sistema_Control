@@ -29,9 +29,9 @@ body {
                 url('');
     border-radius: 8px;
     /* Si el avatar es una imagen, añadir: */
-    background-size: cover; */
-    background-position: center; */
-    background-image: url('https://peruretail.sfo3.cdn.digitaloceanspaces.com/wp-content/uploads/maaaassssd-scaled.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-image: url('https://media.istockphoto.com/id/1194657251/es/vector/icono-de-hombre-de-negocios-silueta-de-cara-masculina-con-traje-de-oficina-y-corbata-perfil.jpg?s=170667a&w=0&k=20&c=cGfXyVoYghmn57Pe1TCZ-xjh31JtsBo9cUSiVILwsLQ=');
 }
 
 .sidebar .admin-label {

@@ -30,7 +30,7 @@ $nombre = $_SESSION['user_name'] ?? 'Usuario';
         <div class="avatar"></div>
         <div class="admin-label">
             <i class="fas <?php
-                echo $rol === 'gerente' ? 'fa-user-tie' : ($rol === 'admin' ? 'fa-user-cog' : 'fa-user');
+                echo $rol === 'gerente' ?  : ($rol === 'admin' ? 'fa-user-cog' : 'fa-user');
             ?>"></i>
             <?php echo ucfirst($rol); ?><br>
             <small><?php echo htmlspecialchars($nombre); ?></small>
